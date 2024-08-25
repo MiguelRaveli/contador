@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        border: solid;
+        width: 50%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      h1,
+      span {
+        font-size: 3em;
+      }
+
+      .buttons {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .buttons button {
+        width: 30%;
+        font-size: 1em;
+      }
+
+      .spanRed {
+        color: red;
+      }
+      .spanGreen {
+        color: green;
+      }
+    </style>
+    <main>
+      <div class="container">
+        <h1>Counter</h1>
+        <span id="count">0</span>
+        <div class="buttons">
+          <button class="btn Decrease">Decrease</button>
+          <button class="btn Reset">Reset</button>
+          <button class="btn Increase">Increase</button>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Minha forma de Fazer
+
+      //   const Decrease = document.querySelector("#Decrease");
+      //   const Reset = document.querySelector("#Reset");
+      //   const Increase = document.querySelector("#Increase");
+      //   const initialValue = 0;
+      //   const count = document.querySelector("#count");
+      //   count.textContent = initialValue;
+      //   Reset.addEventListener("click", () => {
+      //     count.textContent = 0;
+      //   });
+      //   Decrease.addEventListener("click", () => {
+      //     count.textContent = Number(count.textContent) - 1;
+      //   });
+
+      //   Increase.addEventListener("click", () => {
+      //     count.textContent = Number(count.textContent) + 1;
+      //   });
+
+      // Forma do video
+
+      let count = 0;
+      const value = document.querySelector("#count");
+      const btns = document.querySelectorAll(".btn");
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const styles = e.currentTarget.classList;
+
+          if (styles.contains("Decrease")) {
+            count--;
+          } else if (styles.contains("Increase")) {
+            count++;
+          } else if (styles.contains("Reset")) {
+            count = 0;
+          }
+
+          if (count > 0) {
+            value.style.color = "green";
+          } else if (count < 0) {
+            value.style.color = "red";
+          } else {
+            value.style.color = "black";
+          }
+
+          value.textContent = count;
+        });
+      });
+    </script>
+  </body>
+</html>
